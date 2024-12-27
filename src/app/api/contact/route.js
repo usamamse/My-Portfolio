@@ -3,48 +3,47 @@ import nodemailer from "nodemailer"
 
 // configure email
 const transporter = nodemailer.createTransport({
-    service:"gmail",
-    auth:{
-        user: process.env.NEXT_PUBLIC_SENDER_USER,
-        pass:process.env.NEXT_PUBLIC_SENDER_PASS,
-    }
+    service: "gmail",
+    auth: {
+        user: process.env.SENDER_USER,
+        pass: process.env.SENDER_PASS,
+    },
+    logger: true, // Enable Nodemailer logger for debugging
+    debug: true,  // This will provide detailed information about the connection
 });
 
-export async function POST(request){
+export async function POST(request) {
     try {
-        const {fullname, email, message} = await request.json();
+        const { fullname, email, message } = await request.json();
 
-        //validation
-        if(!fullname || !email || !message){
+        // Validation
+        if (!fullname || !email || !message) {
             return NextResponse.json(
-                {error: "Full Name; Email and Message are required!"},
-                {status: 400},
-            )
+                { error: "Full Name, Email, and Message are required!" },
+                { status: 400 }
+            );
         }
 
-        const mailOption = {
-            from:process.env.NEXT_PUBLIC_SENDER_USER,
-            to:process.env.NEXT_PUBLIC_RECIEVER_USER,
-            subject:"New Contact From Submission",
-            text:`
-                fullname:${fullname}
-                email:${email}
-                message:${message}
-            `,
+        const mailOptions = {
+            from: process.env.SENDER_USER,
+            to: process.env.RECIEVER_USER,
+            subject: "New Contact Form Submission",
+            text: `Full Name: ${fullname}\nEmail: ${email}\nMessage: ${message}`,
         };
 
-        await transporter.sendMail(mailOption);
+        // Send email
+        await transporter.sendMail(mailOptions);
 
         return NextResponse.json(
-            {message: "Contact Form Submited Successfully!"},
-            {status: 200},
-        )
+            { message: "Contact Form Submitted Successfully!" },
+            { status: 200 }
+        );
     } catch (error) {
-        console.error("Error processing contact form:",error);
+        console.error("Error processing contact form:", error.message);
+        console.error(error.stack); // Log the stack trace for more detailed debugging
         return NextResponse.json(
-            {error: "Failed processing contact form!"},
-            {status: 500},
-        )
-        
+            { error: "Failed processing contact form!" },
+            { status: 500 }
+        );
     }
 }

@@ -49,13 +49,13 @@ export function Contact() {
             message: formData?.message,
         }
 
-        const response = await fetch('/api/contact',{
-            method:'POST',
-            header:{
-                    'Content-Type':'application/json',
-            },
-            body: JSON.stringify(formatData),
-        })
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formatData),
+      });
 
         if(!response.ok){
             throw new Error("Network res was not ok")
@@ -99,14 +99,6 @@ export function Contact() {
       <h2 className="font-bold text-4xl text-neutral-800 dark:text-neutral-200">
         Write me a message ...
       </h2>
-      <SparklesCore
-                        background="transparent"
-                        minSize={0.4}
-                        maxSize={1}
-                        particleDensity={1000}
-                        className="w-[370px] h-[30px]"
-                        particleColor="#FFFFFF"
-                      />
       {loadingMessage?.message && (
         <p
             className={`mt-[20px] text-[0.9rem] ${

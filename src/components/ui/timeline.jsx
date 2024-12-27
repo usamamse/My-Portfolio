@@ -37,14 +37,6 @@ export const Timeline = ({
           className="max-w-7xl pl-4 mx-auto text-xl md:text-1xl font-small text-neutral-800 dark:text-neutral-100">
           Explore My Professional and Educational Journey.
         </p>
-        <SparklesCore
-                  background="transparent"
-                  minSize={0.4}
-                  maxSize={1}
-                  particleDensity={1000}
-                  className="w-[500px] h-[30px]"
-                  particleColor="#FFFFFF"
-                />
       </div>
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
