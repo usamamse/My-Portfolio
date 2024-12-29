@@ -356,7 +356,7 @@ const FPL = () => {
             <span className="font-bold text-neutral-700 dark:text-neutral-200">
             Project Overview : 
             </span>{" "}
-            <br/>I created an automated Google Spreadsheet that leverages web scraping and API integration to manage a Fantasy Premier League (FPL) manager league. This project combines real-time data extraction with spreadsheet automation to provide league organizers with a streamlined and engaging way to track league standings, analyze top-performing players, and feature a Team of the Week (TOTW).
+            <br/>I developed an automated Google Spreadsheet using JavaScript for backend scripting, leveraging web scraping and API integration to create a comprehensive Fantasy Premier League (FPL) manager league system. This project streamlines data handling for league organizers by automating real-time updates and offering insightful features such as league standings, top-performing players, and Team of the Week (TOTW) analysis.
           </p>
           <Image
             src="/FPL.jpg"
