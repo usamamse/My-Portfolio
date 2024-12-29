@@ -15,7 +15,12 @@ export function Projects() {
         className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200">
         My latest works.
         
-      </h2>
+      </h2><br/>
+      <h4
+        className="max-w-7xl pl-4 mx-auto text-[15px] md:text-2xl font-thin text-neutral-800 dark:text-neutral-200">
+       (Click to see more details about the project).
+        
+      </h4>
       
       
       <Carousel items={cards} />
@@ -338,6 +343,63 @@ const CV = () => {
     })}
   </>);
 };
+
+const FPL = () => {
+  return (<>
+    {[...new Array(1).fill(1)].map((_, index) => {
+      return (
+        (<div
+          key={"dummy-content" + index}
+          className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
+          <p
+            className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+            <span className="font-bold text-neutral-700 dark:text-neutral-200">
+            Project Overview : 
+            </span>{" "}
+            <br/>I created an automated Google Spreadsheet that leverages web scraping and API integration to manage a Fantasy Premier League (FPL) manager league. This project combines real-time data extraction with spreadsheet automation to provide league organizers with a streamlined and engaging way to track league standings, analyze top-performing players, and feature a Team of the Week (TOTW).
+          </p>
+          <Image
+            src="/FPL.jpg"
+            alt="FPL"
+            height="500"
+            width="500"
+            className="pb-4 pt-4 md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain" />
+          <p
+            className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+            <span className="font-bold text-neutral-700 dark:text-neutral-200">
+            Key Features : 
+            </span>{" "}
+            <br/>- <strong>Web Scraping for Dynamic Data Updates: </strong>Extracts FPL data, including player points, fixtures, and results, directly from web sources.
+
+            <br/>- <strong>Automated League Standings: </strong>Updates rankings in real time based on weekly points and overall scores for managers.
+
+
+            <br/>- <strong>Custom Scoring Rules & Bonuses: </strong>Enables admins to add custom rules, head-to-head results, and other league-specific scoring bonuses.
+
+
+            <br/>- <strong>Interactive Visualizations: </strong>Provides charts and tables to track performance trends, captaincy impact, and transfer success.
+            <Image
+            src="/FPL2.jpg"
+            alt="FPL"
+            height="500"
+            width="500"
+            className="pb-4 pt-4 md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain" />
+            <Image
+            src="/FPL3.jpg"
+            alt="FPL"
+            height="500"
+            width="500"
+            className="pb-4 pt-4 md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain" />
+          </p>
+        </div>
+        
+        )
+      );
+    })}
+  </>);
+};
+
+
 const data = [
   {
     category: "UI/UX",
@@ -364,8 +426,13 @@ const data = [
     content: <CV />,
   },
   {
-    category: "Application Desktop",
-    title: "Gestion de tickets.",
+    category: "Automated Spreadsheet",
+    title: "Fantasy Premier League Managers League System.",
+    src: "/FPL.jpg",
+    content: <FPL />,
+  },{
+    category: "Desktop Application",
+    title: "Tickets Management.",
     src: "/ticket.jpeg",
     content: <POS />,
   },
